@@ -5,7 +5,6 @@ deploy:
   bucket: "pympmstatic"
   region: sa-east-1
   skip_cleanup: true
-  acl: public_read
   cache_control: "max-age=31536000"
   expires: "2099-12-31 00:00:00 -0000"
 notifications:
