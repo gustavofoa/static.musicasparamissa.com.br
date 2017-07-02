@@ -36,7 +36,7 @@ body {
     padding-top: 92px;
   }
   .body-nav-fixed-menu-top {
-    padding-top: 127px;
+    padding-top: 96px;
   }
 }
 @media (min-width: 992px) {
@@ -138,8 +138,8 @@ label {
   padding: 0;
 }
 .section-heading-page {
-  margin-bottom: 20px;
-  margin-top: 48px; /* #####player12#####*/
+  margin-bottom: 0px;
+/*  margin-top: 48px; /* #####player12#####*/
   padding: 20px 0;
   color: black;
   border-bottom: 1px solid #ddd;
@@ -576,7 +576,8 @@ label {
   }
   .body-nav-fixed-menu-top #nav.navbar-fixed-top {
 /*    top: 35px;    ######player1#####*/
-    top: 79px; /* #####player12#####*/
+/*    top: 79px; #####player12#####*/
+    top: 0px; /* #####noplayer#####*/
   }
 }
 /* Navbar
