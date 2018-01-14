@@ -1,6 +1,7 @@
 var starratings_config_js = {
   "grs":false,
   "ajaxurl":"/starratings-ajax.do",
+  "starsurl":"/stars.json",
   "msg":"Avalie esta m\u00fasica!",
   "fuelspeed":600,
   "thankyou":"Obrigado pelo seu voto!",
