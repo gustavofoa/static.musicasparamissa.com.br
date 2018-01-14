@@ -38,18 +38,23 @@
  			}
  		}, $.fn.starratings.options, options ? options : {});
 
- 		var Objs = [];
- 		this.each(function(){
- 			Objs.push($(this));
- 			$.fn.starratings.animate($(this));
- 		});
 
+        var me = this;
+        var Objs = [];
         $.get( $.fn.starratings.options.starsurl, function( stars ) {
+
             $.fn.starratings.options.stars = stars;
- 		    $.fn.starratings.fetch(Objs, 0, '0%', $.fn.starratings.options.msg, true);
 
             //Update list with stars
             var starElements = document.querySelectorAll('[data-star]');
+
+            me.each(function(){
+                Objs.push($(this));
+                if(starElements.length == 0)
+                    $.fn.starratings.animate($(this));
+            });
+
+ 		    $.fn.starratings.fetch(Objs, 0, '0%', $.fn.starratings.options.msg, true);
 
             if(starElements != null)
                 starElements.forEach(function(item, index){
@@ -67,7 +72,6 @@
  		if(!obj.hasClass('disabled'))
  		{
  			if($.fn.starratings.options.stars){
- 			    $('')
  			    var legend = $('.sr-legend', obj).html();
                 var fuel = $.fn.starratings.options.stars[obj.attr('data-id')].r+'%';//$('.sr-fuel', obj).css('width');
                 $('.sr-fuel', obj).stop(true,true).animate({'width':fuel}, $.fn.starratings.options.fuelspeed);
@@ -118,12 +122,12 @@
 
  	$.fn.starratings.update = function(obj, per, legend, disable, is_fetch)
  	{
- 		if(disable=='true')
+ 		if(disable==true)
  		{
  			$('.sr-fuel', obj).removeClass('yellow').addClass('orange');
  		}
  		$('.sr-fuel', obj).stop(true, true).animate({'width':per}, $.fn.starratings.options.fuelspeed, 'linear', function(){
- 			if(disable=='true')
+ 			if(disable==true)
  			{
  				obj.addClass('disabled');
  				$('.sr-stars a', obj).unbind('hover');
@@ -160,8 +164,8 @@
  			postids.push($(this).attr('data-id'));
  		});
  		$.ajax({
- 			url: $.fn.starratings.options.ajaxurl,
- 			data: 'id='+postids+'&stars='+stars,
+ 			url: $.fn.starratings.options.ajaxurl+postids,
+ 			data: 'stars='+stars,
  			type: "post",
  			dataType: "json",
  			beforeSend: function(xhr, settings) {
