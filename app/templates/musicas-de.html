@@ -12,23 +12,23 @@
 
 
 
-{% if categoria.categoria_mae %}
-<h1><a href="/musicas-de/{{ categoria.categoria_mae.slug }}">{{ categoria.categoria_mae.nome }}</a><h1>
+{% if categoriaMae %}
+<h1><a href="/musicas-de/{{ categoriaMae.slug }}">{{ categoriaMae.nome }}</a><h1>
 {% endif %}
 
 <h2 class="title-sm text-uppercase hr-left text-theme">{{ categoria.nome }}</h2>
 
 <ul>
-{% for filha in categoria.get_filhas %}
+{% for filha in categoria.children %}
     <h4><li><a href="/musicas-de/{{ filha.slug }}">{{ filha.nome }}</a></li></h4>
 {% endfor %}
 </ul>
 
-{% if not categoria.get_filhas %}
+{% if not categoria.children %}
 <!--<h2>Músicas</h2>-->
 
 <ul>
-{% for musica in categoria.get_musicas %}
+{% for musica in musicas %}
 
     <div class="star-ratings top-right rgt">
       <div class="sr-stars sr-star gray">
@@ -40,7 +40,7 @@
     <a href="/musica/{{ musica.slug }}">
       <h4><li>{{ musica.nome }}</li></h4>
     {% autoescape off %}
-    <p>{{ musica.get_inicio }}</p>
+    <p>{{ musica.letraInicio }}</p>
     {% endautoescape %}
     </a>
 {% endfor %}

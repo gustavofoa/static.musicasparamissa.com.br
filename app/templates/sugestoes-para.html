@@ -2,10 +2,10 @@
 
 {% block title2 %}{% block title %}{{ diaLiturgico.titulo }} - Músicas para Missa{% endblock %}{% endblock %}
 
-{% block image-tag %}<meta property="og:image" content="{{ STATICPATH }}/{{ diaLiturgico.get_img_url }}" />{% endblock %}
+{% block image-tag %}<meta property="og:image" content="{{ STATICPATH }}/{{ diaLiturgico.imgUrl }}" />{% endblock %}
 {% block url-tag %}
-<link rel="canonical" href="https://musicasparamissa.com.br{{ diaLiturgico.get_absolute_url }}" />
-<meta property="og:url" content="https://musicasparamissa.com.br{{ diaLiturgico.get_absolute_url }}" />
+<link rel="canonical" href="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
+<meta property="og:url" content="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
 {% endblock %}
 {% block description-tag %}<meta property="og:description" content="Sugestões de músicas para {{ diaLiturgico.titulo }}." />{% endblock %}
 
@@ -21,14 +21,14 @@
 <h2 style="text-align:center;">{{ diaLiturgico.titulo }}</h2>
 
 {% for dt in datas %}
-<h3 style="text-align:center;">{{ dt.data }}</h3>
+<h3 style="text-align:center;">{{ dt.data | datetimeformat('%d/%m/%Y') }}</h3>
 {% endfor %}
 
-<img class="img-responsive center" src="{{ STATICPATH }}/{{ diaLiturgico.get_img_300_url }}" />
+<img class="img-responsive center" src="{{ STATICPATH }}/{{ diaLiturgico.img300url }}" />
 
 <p style="text-align:center;">{% autoescape off %}{{ diaLiturgico.introducao }}{% endautoescape %}</p>
 
-{% if saturday == True %}
+{% if saturday %}
   <p style="color: red;">Importante! Confira com o celebrante se a liturgia será esta de sábado ou a de domingo, pois aos sábados, geralmente se utiliza a liturgia de domingo se a missa for a noite.</p>
 {% endif %}
 
@@ -38,8 +38,8 @@
     {% for item in items %}
     <div class="accordion-heading accordion-collapse-in">
       <a class="active accordion-toggle icon-toggle" data-toggle="collapse" data-parent="#accorside{{ item.posicao }}" href="#accorside-{{ item.posicao }}">
-        {% if item.leitura %}<i class="fa fa-font"></i>
-        {% elif item.sugestaomusica %}<i class="fa fa-microphone"></i>{% endif %}
+        {% if item.formatedTexto %}<i class="fa fa-font"></i>
+        {% elif item.musicas %}<i class="fa fa-microphone"></i>{% endif %}
         {{ item.titulo }}
       </a>
     </div>
@@ -47,14 +47,14 @@
       <div class="accordion-inner">
         <div class="panel-body">
 
-        {% if item.leitura %}
+        {% if item.formatedTexto %}
           {% autoescape off %}
-            {{ item.leitura.get_formated_texto }}
+            {{ item.formatedTexto }}
           {% endautoescape %}
-        {% elif item.sugestaomusica %}
+        {% elif item.musicas %}
 
           <ul class="list-unstyled">
-            {% for mus in item.sugestaomusica.get_musicas %}
+            {% for mus in item.musicas %}
             <div class="star-ratings top-right rgt">
               <div class="sr-stars sr-star gray">
                 <div class="sr-fuel sr-star yellow" data-star="{{ mus.slug }}"></div>
@@ -62,7 +62,7 @@
               </div>
             </div>
               <li>
-              <a href="{{ mus.get_absolute_url }}">{{ mus.nome }}</a>
+              <a href="{{ mus.absoluteUrl }}">{{ mus.nome }}</a>
               </li>
             {% endfor %}
           </ul>

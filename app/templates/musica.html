@@ -3,7 +3,7 @@
 
 {% block image-tag %}
 {% if musica.tem_imagem %}
-<meta property="og:image" content="{{ STATICPATH }}/images/musicas/'|add:musica.slug|add:'.png" />
+<meta property="og:image" content="{{ STATICPATH }}/images/musicas/{{ musica.slug }}.png" />
 <meta property="og:image:type" content="image/png">
 {% else %}
 <meta property="og:image" content="{{ STATICPATH }}/images/MpMFace.png" />
@@ -87,7 +87,7 @@
           </button>
         </div>
         <div id='div-letra'>
-          {{ musica.letra|linebreaks }}
+          {{ musica.letra }}
         </div>
       </div>
   		<div id="cifra" class="tab-pane fade">
@@ -124,7 +124,7 @@
     				{{ musica.cifra }}
     			</pre>
   		</div>
-  		<div id="info" class="tab-pane fade">{{ musica.info|linebreaks }}</div><!--
+  		<div id="info" class="tab-pane fade">{{ musica.info }}</div><!--
   		<div id="cat" class="tab-pane fade">
   			<ul>
   			{% for categoria in musica.categorias.all %}

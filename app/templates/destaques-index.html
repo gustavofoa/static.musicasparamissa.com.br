@@ -11,11 +11,11 @@
         <div id="owl-our-work" class="owl-carousel">
           {% for d in destaques %}
             <div class="item">
-              <a href="{{d.liturgia.get_absolute_url }}" class="img-wrapper rounded">
-                <img class="img-responsive img-rounded" src="{{ STATICPATH }}/{{ d.liturgia.get_img_url }}" alt="theme-img">
+              <a href="{{d.liturgia.absoluteUrl }}" class="img-wrapper rounded">
+                <img class="img-responsive img-rounded" src="{{ STATICPATH }}/{{ d.liturgia.imgUrl }}" alt="theme-img">
               </a>
-              <a href="{{d.liturgia.get_absolute_url }}" class="category">{{ d.liturgia.titulo }}</a>
-              <p class="meta hidden-md hidden-sm">{{ d.data }}</p>
+              <a href="{{d.liturgia.absoluteUrl }}" class="category">{{ d.liturgia.titulo }}</a>
+              <p class="meta hidden-md hidden-sm">{{ d.data | datetimeformat('%d/%m/%Y') }}</p>
             </div>
           {% endfor %}
         </div>
