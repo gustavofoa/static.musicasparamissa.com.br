@@ -45,7 +45,7 @@ $(document).ready(function() {
       document.location = url;
     }
 
-    $('#calendar-navbar').datepicker(calendarOptions).on("changeDate",onClick);
+//    $('#calendar-navbar').datepicker(calendarOptions).on("changeDate",onClick);
     $('#calendar').datepicker(calendarOptions).on("changeDate",onClick);
     $('#calendar-footer').datepicker(calendarOptions).on("changeDate",onClick);
 
