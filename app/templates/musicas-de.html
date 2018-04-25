@@ -13,10 +13,10 @@
 
 
 {% if categoriaMae %}
-<h1><a href="/musicas-de/{{ categoriaMae.slug }}">{{ categoriaMae.nome }}</a><h1>
+<h2 class="title-sm text-uppercase hr-left text-theme"><a href="/musicas-de/{{ categoriaMae.slug }}">{{ categoriaMae.nome }}</a><h2>
 {% endif %}
 
-<h2 class="title-sm text-uppercase hr-left text-theme">{{ categoria.nome }}</h2>
+<h1>{{ categoria.nome }}</h1>
 
 <ul>
 {% for filha in categoria.children %}

@@ -159,6 +159,8 @@
 
  	$.fn.starratings.fetch = function(obj, stars, fallback_fuel, fallback_legend, is_fetch)
  	{
+ 	    if(!$('sr-legend'))
+ 	        return;
  		var postids = [];
  		$.each(obj, function(){
  			postids.push($(this).attr('data-id'));
