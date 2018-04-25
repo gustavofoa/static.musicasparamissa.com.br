@@ -159,7 +159,7 @@
 
  	$.fn.starratings.fetch = function(obj, stars, fallback_fuel, fallback_legend, is_fetch)
  	{
- 	    if(!$('sr-legend'))
+ 	    if(window.location.href.indexOf('/musica/') < 0)
  	        return;
  		var postids = [];
  		$.each(obj, function(){
