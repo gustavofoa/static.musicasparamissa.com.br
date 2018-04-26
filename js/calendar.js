@@ -32,23 +32,25 @@ var calendarOptions = {
 
 $(document).ready(function() {
 
-  $.get( "/datas.json", function( datas ) {
+ var xhttp = new JSONHttpRequest();
+ xhttp.overrideMimeType("application/json");
+ xhttp.onreadystatechange = function(datas) {
 
-    calendarOptions.datas = datas;
+     calendarOptions.datas = JSON.parse(this.responseText);
 
-    var onClick = function(e){
-      var date = e.date;
-      date.setHours(date.getHours()+1);
-      var data = formatDate(date);
-      var url = calendarOptions.datas[data].url;
-      //window.open(url);
-      document.location = url;
-    }
+     var onClick = function(e){
+       var date = e.date;
+       date.setHours(date.getHours()+1);
+       var data = formatDate(date);
+       var url = calendarOptions.datas[data].url;
+       document.location = url;
+     }
 
-//    $('#calendar-navbar').datepicker(calendarOptions).on("changeDate",onClick);
-    $('#calendar').datepicker(calendarOptions).on("changeDate",onClick);
-    $('#calendar-footer').datepicker(calendarOptions).on("changeDate",onClick);
+     $('#calendar').datepicker(calendarOptions).on("changeDate",onClick);
+     $('#calendar-footer').datepicker(calendarOptions).on("changeDate",onClick);
 
-  });
+ };
+ xhttp.open("GET", "/datas.json", true);
+ xhttp.send();
 
 });
