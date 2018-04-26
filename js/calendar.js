@@ -36,6 +36,9 @@ $(document).ready(function() {
  xhttp.overrideMimeType("application/json");
  xhttp.onreadystatechange = function(datas) {
 
+    if(!this.responseText && this.responseText.length == 0)
+        return;
+
      calendarOptions.datas = JSON.parse(this.responseText);
 
      var onClick = function(e){
