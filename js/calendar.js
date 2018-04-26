@@ -32,7 +32,7 @@ var calendarOptions = {
 
 $(document).ready(function() {
 
- var xhttp = new JSONHttpRequest();
+ var xhttp = new XMLHttpRequest();
  xhttp.overrideMimeType("application/json");
  xhttp.onreadystatechange = function(datas) {
 
