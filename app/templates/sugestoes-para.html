@@ -24,7 +24,7 @@
 <h3 style="text-align:center;">{{ dt.data | datetimeformat('%d/%m/%Y') }}</h3>
 {% endfor %}
 
-<img class="img-responsive center" src="{{ STATICPATH }}/{{ diaLiturgico.img300url }}" />
+<img class="img-responsive center" src="{{ STATICPATH }}{{ diaLiturgico.img300url }}" />
 
 <p style="text-align:center;">{% autoescape off %}{{ diaLiturgico.introducao }}{% endautoescape %}</p>
 
