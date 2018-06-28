@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title2 %}{% block title %}{{ diaLiturgico.titulo }} - Músicas para Missa{% endblock %}{% endblock %}
+{% block title %}{{ diaLiturgico.titulo }} - Músicas para Missa{% endblock %}
 
 {% block image-tag %}<meta property="og:image" content="{{ STATICPATH }}/{{ diaLiturgico.imgUrl }}" />{% endblock %}
 {% block url-tag %}
