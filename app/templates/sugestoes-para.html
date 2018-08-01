@@ -7,7 +7,9 @@
 <link rel="canonical" href="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
 <meta property="og:url" content="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
 {% endblock %}
-{% block description-tag %}<meta property="og:description" content="Sugestões de músicas para {{ diaLiturgico.titulo }}." />{% endblock %}
+
+{% block title-tag %}<meta property="og:title" content="Músicas para {{ diaLiturgico.titulo }}" />{% endblock %}
+{% block description-tag %}<meta property="og:description" content="Configura nossas sugestões de músicas para a missa de {{ diaLiturgico.titulo }}." />{% endblock %}
 
 {% block content %}
 

@@ -4,7 +4,6 @@
 	<title>{% block title %}Músicas para Missa{% endblock %}</title>
 	{% include 'header.html' %}
 
-	<meta property="og:title" content="{% block title2 %}Músicas para Missa{% endblock %}" />
 	{% block image-tag %}
 	<meta property="og:image" content="{{ STATICPATH }}/images/MpMFace.png" />
 	<meta property="og:image:type" content="image/png">
@@ -12,6 +11,7 @@
 	<meta property="og:image:height" content="504">
 	{% endblock %}
 	{% block url-tag %}<meta property="og:url" content="https://musicasparamissa.com.br/" />{% endblock %}
+	{% block title-tag %}<meta property="og:title" content="Músicas para Missa" />{% endblock %}
 	{% block description-tag %}<meta property="og:description" content="Sugestões de músicas para missas." />{% endblock %}
 </head>
 <body class="body-nav-fixed-menu-top">
