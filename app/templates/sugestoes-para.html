@@ -2,7 +2,7 @@
 
 {% block title %}{{ diaLiturgico.titulo }} - Músicas para Missa{% endblock %}
 
-{% block image-tag %}<meta property="og:image" content="{{ STATICPATH }}/{{ diaLiturgico.imgUrl }}" />{% endblock %}
+{% block image-tag %}<meta property="og:image" content="{{ STATICPATH }}{{ diaLiturgico.imgUrl }}" />{% endblock %}
 {% block url-tag %}
 <link rel="canonical" href="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
 <meta property="og:url" content="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
