@@ -64,10 +64,18 @@
               </div>
             </div>
               <li>
-              <a href="{{ mus.absoluteUrl }}">{{ mus.nome }}</a>
+              <a href="{{ mus.absoluteUrl }}" target="_blank">{{ mus.nome }}</a>
               </li>
             {% endfor %}
           </ul>
+
+          {% if item.avulsas && item.categorias %}
+            {% for ct in item.categorias %}
+              <div style="text-align: center; color: #DD0202;">
+                <a href="{{ ct.absoluteUrl }}" target="_blank">Confira mais sugestões de {{ ct.nome }}</a>
+              </div>
+            {% endfor %}
+          {% endif %}
 
         {% endif %}
       </div>
