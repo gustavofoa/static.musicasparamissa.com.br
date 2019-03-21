@@ -95,16 +95,23 @@ $('#add-meio-tom-cifra').on('click', function (e) {
   mudarCifras(tomMore);
 });
 
+function replaceAll(str, from, to){
+  var pos = str.indexOf(from);
+  while (pos > -1){
+    str = str.replace(from, to);
+    pos = str.indexOf(from);
+  }
+  return (str);
+}
+
 function mudarCifras(novosTons){
   var cifras = document.getElementsByTagName ('b');
   for (b = 0; b < cifras.length; b++) {
     var cifra = cifras[b].innerHTML;
-    tomFrom.forEach(function(tom, i){
-      cifra = cifra.replace(new RegExp(tom, 'g'), "$"+i+"$");
-    });
-    for(i=0;i<novosTons.length;i++){
-      cifra = cifra.replace("$"+i+"$",novosTons[i]);
-    }
+    tomFrom.forEach((tom, i) => cifra = cifra.replace(new RegExp(tom, 'g'), "$"+i+"$"));
+    for(i=0;i<novosTons.length;i++)
+      cifra = replaceAll(cifra, "$"+i+"$",novosTons[i]);
+    
     cifras[b].innerHTML = cifra;
   };
 }
