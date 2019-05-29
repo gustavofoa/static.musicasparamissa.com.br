@@ -38,49 +38,51 @@
   <div class="panel accordion-group">
 
     {% for item in items %}
-    <div class="accordion-heading accordion-collapse-in">
-      <a class="active accordion-toggle icon-toggle" data-toggle="collapse" data-parent="#accorside{{ item.posicao }}" href="#accorside-{{ item.posicao }}">
-        {% if item.formatedTexto %}<i class="fa fa-font"></i>
-        {% elif item.musicas %}<i class="fa fa-microphone"></i>{% endif %}
-        {{ item.titulo }}
-      </a>
-    </div>
-    <div id="accorside-{{ item.posicao }}" class="accordion-body collapse">
-      <div class="accordion-inner">
-        <div class="panel-body">
+      {% if item.formatedTexto or item.musicas | length > 0 %}
+        <div class="accordion-heading accordion-collapse-in">
+          <a class="active accordion-toggle icon-toggle" data-toggle="collapse" data-parent="#accorside{{ item.posicao }}" href="#accorside-{{ item.posicao }}">
+            {% if item.formatedTexto %}<i class="fa fa-font"></i>
+            {% elif item.musicas %}<i class="fa fa-microphone"></i>{% endif %}
+            {{ item.titulo }}
+          </a>
+        </div>
+        <div id="accorside-{{ item.posicao }}" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <div class="panel-body">
 
-        {% if item.formatedTexto %}
-          {% autoescape off %}
-            {{ item.formatedTexto }}
-          {% endautoescape %}
-        {% elif item.musicas %}
+            {% if item.formatedTexto %}
+              {% autoescape off %}
+                {{ item.formatedTexto }}
+              {% endautoescape %}
+            {% elif item.musicas %}
 
-          <ul class="list-unstyled">
-            {% for mus in item.musicas %}
-            <div class="star-ratings top-right rgt">
-              <div class="sr-stars sr-star gray">
-                <div class="sr-fuel sr-star yellow" data-star="{{ mus.slug }}"></div>
-                <!-- sr-fuel --><a href="#1"></a><a href="#2"></a><a href="#3"></a><a href="#4"></a><a href="#5"></a>
-              </div>
-            </div>
-              <li>
-              <a href="{{ mus.absoluteUrl }}" target="_blank">{{ mus.nome }}</a>
-              </li>
-            {% endfor %}
-          </ul>
+              <ul class="list-unstyled">
+                {% for mus in item.musicas %}
+                <div class="star-ratings top-right rgt">
+                  <div class="sr-stars sr-star gray">
+                    <div class="sr-fuel sr-star yellow" data-star="{{ mus.slug }}"></div>
+                    <!-- sr-fuel --><a href="#1"></a><a href="#2"></a><a href="#3"></a><a href="#4"></a><a href="#5"></a>
+                  </div>
+                </div>
+                  <li>
+                  <a href="{{ mus.absoluteUrl }}" target="_blank">{{ mus.nome }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
 
-          {% if item.avulsas && item.categorias %}
-            {% for ct in item.categorias %}
-              <div style="text-align: center; color: #DD0202;">
-                <a href="{{ ct.absoluteUrl }}" target="_blank">Confira AQUI mais sugestões de {{ ct.nome }}</a>
-              </div>
-            {% endfor %}
-          {% endif %}
+              {% if item.avulsas && item.categorias %}
+                {% for ct in item.categorias %}
+                  <div style="text-align: center; color: #DD0202;">
+                    <a href="{{ ct.absoluteUrl }}" target="_blank">Confira AQUI mais sugestões de {{ ct.nome }}</a>
+                  </div>
+                {% endfor %}
+              {% endif %}
 
-        {% endif %}
-      </div>
-      </div>
-    </div>
+            {% endif %}
+          </div>
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
 
   </div>
