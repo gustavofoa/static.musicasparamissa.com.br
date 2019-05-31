@@ -1,7 +1,7 @@
-from PIL import Image, ImageOps, ImageDraw
+from pil import Image, ImageOps, ImageDraw
 import glob, os
 
-size = 80, 80
+size = 100, 100
 
 for infile in glob.glob("diasLiturgicos/*.*"):
     name = os.path.basename(infile)
