@@ -1,4 +1,4 @@
-from pil import Image, ImageOps, ImageDraw
+from PIL import Image, ImageOps, ImageDraw
 import glob, os, math
 
 width = 300
