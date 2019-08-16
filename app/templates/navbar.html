@@ -39,11 +39,11 @@
                 </ul>
               </li>
 
-              <!-- SUGESTÕES SOLENIDADES E FESTAS -->
+              <!-- SUGESTÕES SOLENIDADES, FESTAS E OUTRAS -->
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">SOLENIDADES E FESTAS</a>
                 <ul class="dropdown-menu dropdown-menu-left" role="menu">
-                {% for categoria in solenidadesEFestas %}
+                {% for categoria in solenidadesFestasOutras %}
                   <li><a href="/musicas-de/{{ categoria.slug }}">{{ categoria.nome }}</a></li>
                 {% endfor %}
                 </ul>
