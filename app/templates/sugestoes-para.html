@@ -2,14 +2,14 @@
 
 {% block title %}{{ diaLiturgico.titulo }} - Músicas para Missa{% endblock %}
 
-{% block image-tag %}<meta property="og:image" content="{{ STATICPATH }}{{ diaLiturgico.imgUrl }}" />{% endblock %}
-{% block url-tag %}
+{% block imageTag %}<meta property="og:image" content="{{ STATICPATH }}{{ diaLiturgico.imgUrl }}" />{% endblock %}
+{% block urlTag %}
 <link rel="canonical" href="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
 <meta property="og:url" content="https://musicasparamissa.com.br{{ diaLiturgico.absoluteUrl }}" />
 {% endblock %}
 
-{% block title-tag %}<meta property="og:title" content="Músicas para {{ diaLiturgico.titulo }}" />{% endblock %}
-{% block description-tag %}<meta property="og:description" content="Configura nossas sugestões de músicas para a missa de {{ diaLiturgico.titulo }}." />{% endblock %}
+{% block titleTag %}<meta property="og:title" content="Músicas para {{ diaLiturgico.titulo }}" />{% endblock %}
+{% block descriptionTag %}<meta property="og:description" content="Configura nossas sugestões de músicas para a missa de {{ diaLiturgico.titulo }}." />{% endblock %}
 
 {% block content %}
 

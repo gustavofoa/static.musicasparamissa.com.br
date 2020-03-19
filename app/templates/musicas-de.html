@@ -39,9 +39,7 @@
 
     <a href="/musica/{{ musica.slug }}">
       <h4><li>{{ musica.nome }}</li></h4>
-    {% autoescape off %}
-    <p>{{ musica.letraInicio }}</p>
-    {% endautoescape %}
+    <p>{{ musica.letraInicio | safe }}</p>
     </a>
 {% endfor %}
 </ul>

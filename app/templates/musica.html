@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}{{ musica.nome }} - Músicas para Missa{% endblock %}
 
-{% block image-tag %}
+{% block imageTag %}
 {% if musica.tem_imagem %}
 <meta property="og:image" content="{{ STATICPATH }}/images/musicas/{{ musica.slug }}.png" />
 <meta property="og:image:type" content="image/png">
@@ -11,18 +11,20 @@
 {% endif %}
 {% endblock %}
 
-{% block url-tag %}
+{% block urlTag %}
 <link rel="canonical" href="https://musicasparamissa.com.br{{musica.get_absolute_url}}" />
 <meta property="og:url" content="https://musicasparamissa.com.br{{musica.get_absolute_url}}" />
 {% endblock %}
 
-{% block title-tag %}<meta property="og:title" content="{{ musica.nome }} - Músicas para Missa" />{% endblock %}
-{% block description-tag %}<meta property="og:description" content="{{ musica.letra_inicio }}" />{% endblock %}
+{% block titleTag %}<meta property="og:title" content="{{ musica.nome }} - Músicas para Missa" />{% endblock %}
+{% block descriptionTag %}<meta property="og:description" content="{{ musica.letra_inicio }}" />{% endblock %}
 
 
 {% block content %}
 
 {% include 'banners/banner-adsense-top.html' %}
+
+{% include 'email-header.html' %}
 
 {% include 'container-default.html' %}
 
@@ -45,7 +47,7 @@
       <div class="sr-legend">
         <div vocab="https://schema.org/" typeof="Blog">
           <div property="aggregateRating" typeof="AggregateRating">
-            {% autoescape off %}{{ musica.get_legend }}{% endautoescape %}
+            {{ musica.get_legend | safe }}
             <meta property="bestRating" content="5"/>
             <meta property="worstRating" content="1"/>
           </div>
@@ -72,7 +74,6 @@
     </ul>
 
 	  <div class="tab-content">
-		{% autoescape off %}
   		<div id="letra" class="tab-pane fade in active">
         <div class="btn-group btn-group-sm" role="group">
           <button id="remove-font-size-letra" type="button" class="btn btn-default btn-lg">
@@ -91,7 +92,7 @@
           </button>
         </div>
         <div id='div-letra'>
-          {{ musica.letra }}
+          {{ musica.letra | safe }}
         </div>
       </div>
   		<div id="cifra" class="tab-pane fade">
@@ -125,10 +126,10 @@
         <div class="btn-group btn-group-sm" role="group">
         </div>
     			<pre id='div-cifra'>
-    				{{ musica.cifra }}
+    				{{ musica.cifra | safe }}
     			</pre>
   		</div>
-  		<div id="info" class="tab-pane fade">{{ musica.info }}</div><!--
+  		<div id="info" class="tab-pane fade">{{ musica.info | safe }}</div><!--
   		<div id="cat" class="tab-pane fade">
   			<ul>
   			{% for categoria in musica.categorias.all %}
@@ -136,8 +137,7 @@
   			{% endfor %}
   			</ul>
   		</div>-->
-
-		{% endautoescape %}
+  
 	  </div>
   </div>
 </div>
@@ -147,6 +147,6 @@
 
 {% endblock %}
 
-{% block js-import %}
+{% block jsImport %}
 <script src="{{ STATICPATH }}/js/musica-tools.min.js"></script>
 {% endblock %}
