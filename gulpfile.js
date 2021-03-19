@@ -37,6 +37,9 @@ function livereload() {
 function htmlWatch() {
 
     watch("./app/templates/**").on('change', series(cleanOutput, generatePages));
+    watch("./sample-data/**").on('change', series(cleanOutput, generatePages));
+    watch("./css/**").on('change', series(cleanOutput, generatePages));
+    watch("./js/**").on('change', series(cleanOutput, generatePages));
     watch("./output/**").on('change', browserSync.reload);
 
 }
